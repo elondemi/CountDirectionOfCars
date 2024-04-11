@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direction Counter</title>
+</head>
+<body>
+<p>Back: <span id="back">0</span></p>
+<p>Left: <span id="left">0</span></p>
+<p>Straight: <span id="straight">0</span></p>
+<p>Right: <span id="right">0</span></p>
+
+<script>
+
+let counters = {
+    Back: 0,
+    Left: 0,
+    Straight: 0,
+    Right: 0
+};
+
+function updateCounterDisplay() {
+    for (let direction in counters) {
+        document.getElementById(direction.toLowerCase()).innerText = counters[direction];
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    switch (event.key) {
+        case "ArrowDown":
+            counters['Back']++;
+            break;
+        case "ArrowLeft":
+            counters['Left']++;
+            break;
+        case "ArrowUp":
+            counters['Straight']++;
+            break;
+        case "ArrowRight":
+            counters['Right']++;
+            break;
+        default:
+            return; // Exit function if key press is not arrow key
+    }
+    updateCounterDisplay();
+});
+
+// Initialize counter display
+updateCounterDisplay();
+</script>
+</body>
+</html>
